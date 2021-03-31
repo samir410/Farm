@@ -8,6 +8,8 @@ use App\Category;
 use App\Slider;
 use Carbon\Carbon;
 use Storage;
+use Session;
+use App\Cart;
 
 class ProductController extends Controller
 {
@@ -198,6 +200,7 @@ class ProductController extends Controller
            $slider->update();
            return redirect('/view_slider')->with('status','The slider update succesfull');
     }
+
     public function vieworder(){
         return view('Admin.ordertable');
     }

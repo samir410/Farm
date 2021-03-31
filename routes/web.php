@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/','ClientController@Home');
 Route::get('/shop','ClientController@Shop');
-Route::get('/cart','ClientController@Cart');
+
 Route::get('/checkout','ClientController@Checkout');
 Route::get('/login','ClientController@Login');
 Route::get('/signup','ClientController@Signup');
@@ -33,10 +33,8 @@ Route::get('/delete_product/{id}','ProductController@DeleteProduct');
 Route::get('/edit_product/{id}','ProductController@EditProduct');
 Route::post('/update_product','ProductController@UpdateProduct');
 Route::get('/view_product','ProductController@viewproduct');
-
 Route::get('/unactivate_product/{id}', 'ProductController@Unactivateproduct');
 Route::get('/activate_product/{id}', 'ProductController@activateproduct');
-
 
 Route::get('/addcategory','CategoryController@Category');
 Route::post('/save_category','CategoryController@SaveCategory');
@@ -54,12 +52,13 @@ Route::get('/delete_slider/{id}','ProductController@Deleteslider');
 Route::get('/unactivate_slider/{id}', 'ProductController@Unactivateslider');
 Route::get('/activate_slider/{id}', 'ProductController@activateslider');
 
-
 Route::get('/view_order','ProductController@vieworder');
-
-
 
 /////fronend
 Route::get('/view_by_cat/{name}','CategoryController@view_by_cat');
+
+////Cart
+Route::get('/addToCart/{id}','CartController@addTocart');
+Route::get('/cart','CartController@Cart');
 
 

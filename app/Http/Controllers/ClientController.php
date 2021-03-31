@@ -20,9 +20,7 @@ public function Shop(){
     $products = Product::get();
     return view('client.Shop')->with('products', $products)->with('categories', $categories);
 }
-public function Cart(){
-    return view('client.Cart');
-}
+
 public function Checkout(){
     return view('client.Checkout');
 }
