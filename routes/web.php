@@ -60,5 +60,7 @@ Route::get('/view_by_cat/{name}','CategoryController@view_by_cat');
 ////Cart
 Route::get('/addToCart/{id}','CartController@addTocart');
 Route::get('/cart','CartController@Cart');
+Route::get('/remove_item/{id}','CartController@removeItem');
+Route::post('/update_quantity','CartController@updatequantity');
 
 

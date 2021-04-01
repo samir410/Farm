@@ -32,30 +32,36 @@ Cart
 						      </tr>
 						    </thead>
 						 <tbody>
-
-						    @foreach($products as $product)
-						      <tr class="text-center">
-						          <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
-						          <td class="image-prod"><div class="img" style="background-image:url(storage/product_images/{{$product['product_image']}});"></div></td>
-						        
-						          <td class="product-name">
-						        	 <h3>{{$product['product_name']}}</h3>
-						        	 <p>Far far away, behind the word mountains, far from the countries</p>
-						          </td>
-						        
-								<td class="price">${{$product['product_price']}}</td>
-								         <form action="">
-									   <td class="quantity">
-										 <div class="input-group mb-3">
-										   <input type="number" name="quantity" class="quantity form-control input-number" value="{{$product['qty']}}" min="1" max="100">
-									     </div>
-								        </form>	
-					                   </td>
-						        
-						        <td class="total">${{$product['product_price']*$product['qty']}}</td>
-						      </tr><!-- END TR-->
-							@endforeach		
+							@if(Session:: has('cart'))
+							    @foreach($products as $product)
+							      <tr class="text-center">
+								      <td class="product-remove"><a href="/remove_item/{{$product['product_id']}}"><span class="ion-ios-close"></span></a></td>
+							   
+								      <td class="image-prod"><div class="img" style="background-image:url(storage/product_images/{{$product['product_image']}});"></div></td>
+							   
+								      <td class="product-name">
+									     <h3>{{$product['product_name']}}</h3>
+									     <p>Far far away, behind the word mountains, far from the countries</p>
+								      </td>
+							   
+							           <td class="price">${{$product['product_price']}}</td>
+									   {!!Form::open(['action'=>'CartController@updatequantity', 'class'=>'cmxform', 'method'=>'POST', 'id'=>'commentForm'])!!}
+									     {{csrf_field()}}
+									       <td class="quantity">
+										     <div class="input-group mb-3">
+										       <input type="number" name="quantity" class="quantity form-control input-number" value="{{$product['qty']}}" min="1" max="100">
+											   <input type="hidden" name="id" class="quantity form-control input-number" value="{{$product['product_id']}}" min="1" max="100">
+										     </div>
+										{{Form::submit('Update', ['class'=>'btn btn-primary'])}}
+										 {!!Form::close()!!} 
+									       </td>
+							   
+							           <td class="total">${{$product['product_price']*$product['qty']}}</td>
+							      </tr><!-- END TR-->
+						        @endforeach	
+							 @else
+							 <h2>Your cart is currently empty please add some product to continue </h2>
+							 @endif
 						  </tbody>
 						</table>
 					  </div>
