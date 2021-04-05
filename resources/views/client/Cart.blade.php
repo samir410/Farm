@@ -60,7 +60,14 @@ Cart
 							      </tr><!-- END TR-->
 						        @endforeach	
 							 @else
-							 <h2>Your cart is currently empty please add some product to continue </h2>
+							 @if(session('status'))
+							   <div class="alert alert-success alert-dismissible fade show" role="alert">
+							      <strong>{{session('status')}}</strong> 
+								   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								    <span aria-hidden="true">&times;</span>
+								  </button>
+							    </div>
+						      @endif
 							 @endif
 						  </tbody>
 						</table>
@@ -120,10 +127,10 @@ Cart
     					<hr>
     					<p class="d-flex total-price">
     						<span>Total</span>
-    						<span>$17.60</span>
+    						<span>${{Session::get('cart')->totalPrice}}</span>
     					</p>
     				</div>
-    				<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+    				<p><a href="/checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
     			</div>
     		</div>
 			</div>

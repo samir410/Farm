@@ -19,6 +19,8 @@
 
 	@endsection
 @section('scripts')
+<script src="https://js.stripe.com/v2/"></script>
+<script src="src/js/checkout.js"></script>
 <script>
 	$(document).ready(function(){
 

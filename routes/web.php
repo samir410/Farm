@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','ClientController@Home');
 Route::get('/shop','ClientController@Shop');
 
-Route::get('/checkout','ClientController@Checkout');
+
+
 Route::get('/login','ClientController@Login');
 Route::get('/signup','ClientController@Signup');
 
@@ -62,5 +63,9 @@ Route::get('/addToCart/{id}','CartController@addTocart');
 Route::get('/cart','CartController@Cart');
 Route::get('/remove_item/{id}','CartController@removeItem');
 Route::post('/update_quantity','CartController@updatequantity');
+
+//////Checkout
+Route::get('/checkout','ClientController@Checkout');
+Route::post('postcheckout','ClientController@postcheckout');
 
 
